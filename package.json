@@ -1,0 +1,28 @@
+{
+  "name": "uibk-pm-checkfiles",
+  "version": "1.0.0",
+  "description": "Javascript package to check submission completeness",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClProsser/UIBK-PM-CheckFiles.git"
+  },
+  "author": "ClProsser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClProsser/UIBK-PM-CheckFiles/issues"
+  },
+  "homepage": "https://github.com/ClProsser/UIBK-PM-CheckFiles#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "js-yaml": "^3.13.1",
+    "sprintf-js": "^1.1.2",
+    "yargs": "^15.3.1"
+  },
+  "bin": {
+    "checkFiles": "./index.js"
+  }
+}
