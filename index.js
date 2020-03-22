@@ -4,7 +4,7 @@ const fs = require("fs")
 const helper = require("./helper")
 const yargs = require("yargs")
 const colors = require("colors")
-var rimraf = require("rimraf")
+const rimraf = require("rimraf")
 
 const options = yargs
     .options({
@@ -19,6 +19,12 @@ const options = yargs
             description: 'Path of folder to check',
             type: 'string',
             defaultDescription: 'current dir (pwd)'
+        },
+        'summary': {
+            alias: "s",
+            description: 'Summarize ouput messages',
+            type: 'boolean',
+            default: false
         }
     }).argv
 
@@ -30,30 +36,30 @@ if (!options.path) {
         console.error("ERROR: This folder does not exist".red)
         process.exit(1)
     } else {
-        process.chdir(options.path);
+        process.chdir(options.path)
     }
 }
 
 if (!options.config) {
-    options.config = helper.findConfig(options.path);
+    options.config = helper.findConfig(options.path)
 }
 
 const config = helper.readConfig(options.config)
 
-let zipFiles = helper.allFiles(options.path, ["zip", "gz"]);
+let zipFiles = helper.allFiles(options.path, ["zip", "gz"])
 if (zipFiles.length === 1) {
     console.log("Hint: Skipping folder as a zip exists".blue)
-    options.path += "/._temp_zip_" + Math.random().toString(36).substring(2);
+    options.path += "/._temp_zip_" + Math.random().toString(36).substring(2)
     helper.extractZip(zipFiles[0], options.path).then(() => {
-        helper.checkFiles(config, options.path)
-        rimraf(options.path, () => {});
+        helper.checkFiles(config, options.path, options.summary)
+        rimraf(options.path, () => {})
     }).catch(err => {
         console.error(err)
         process.exit(1)
-    });
+    })
 } else {
     if (zipFiles.length > 1) {
         console.log("Warning: Skipping .zip (there is more than one in this directory)".yellow)
     }
-    helper.checkFiles(config, options.path)
+    helper.checkFiles(config, options.path, options.summary)
 }
