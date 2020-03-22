@@ -1,7 +1,7 @@
 {
   "name": "uibk-pm-checkfiles",
-  "version": "1.0.0",
-  "description": "Javascript package to check submission completeness",
+  "version": "1.1.0",
+  "description": "module to check submission completeness",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
