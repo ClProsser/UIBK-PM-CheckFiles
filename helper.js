@@ -91,7 +91,7 @@ let helper = {
 
             if (!allRequiredFiles.includes(file)) {
                 if ((file !== 'group.txt') && !(['yaml', '.yml'].includes(file.slice(-4)))) {
-                    console.log(colors.yellow('Waring: ' + file + ' is not required!'))
+                    console.log(colors.yellow('Warning: ' + file + ' is not required!'))
                 }
             }
         }
